@@ -15,11 +15,11 @@ indepth explanation of the vortex lattice method and you can take a look at my e
 # Why did you do this?
 This is a project I took on to keep myself busy before starting my final year of Aeronautics and Astronautics with Air Vehicle Systems and Design at the University of Southampton. The objectives of this project were
 
-### 1). To keep myself busy
+1). To keep myself busy
 
-### 2). To overcome the deep sense of regret that despite being on an aerospace engineering degree I have not once had the chance to pursue my passion of designing a flight simulator
+2). To overcome the deep sense of regret that despite being on an aerospace engineering degree I have not once had the chance to pursue my passion of designing a flight simulator
 
-### 3). To prepare myself for my final year project which to my delight will involve a large amount of flight simulation
+3). To prepare myself for my final year project which to my delight will involve a large amount of flight simulation
 
 ## There are two versions of the flight simulator available:
 
