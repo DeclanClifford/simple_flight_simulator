@@ -4,14 +4,11 @@ A 3DOF flight simulator based on a 7 horseshoe vortex aerodynamic model
 # What is this?
 This is a project I took on to keep myself busy before starting my final year of Aeronautics and Astronautics with Air Vehicle Systems and Design at the University of Southampton. The objectives of this project were
 
-## 1.
-To keep myself busy
+### 1). To keep myself busy
 
-## 2
-To overcome the deep sense of regret that despite being on an aerospace engineering degree I have not once had the chance to pursue my passion of designing a flight simulator
+### 2). To overcome the deep sense of regret that despite being on an aerospace engineering degree I have not once had the chance to pursue my passion of designing a flight simulator
 
-## 3
-To prepare myself for my final year project which to my delight will involve a large amount of flight simulation
+### 3). To prepare myself for my final year project which to my delight will involve a large amount of flight simulation
 
 This is a MATLAB based longitudinal flight simulator. The aerodynamic model is a custom made vortex lattice method. 7 horseshoe vortices are
 used to model the aircraft's geometry. 4 for the main wing, 1 for the fuselage, 1 for the horizontal stabiliser and 1 for the vertical stabiliser. In effect,
