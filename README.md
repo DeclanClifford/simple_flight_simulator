@@ -9,6 +9,7 @@ dihedral, sweep and taper to be modelled. The tailplane is assumed to be all mov
 
 The model gives generally good agreement (within 15%) with aerodynamic stability derivatives as given by G. L. Teper for a Ryan Navion
 
+# Theory
 If you want to understand the theory behind this model, it is highly recommended you take a look at "" before diving into the code. Here you'll find a very
 indepth explanation of the vortex lattice method and you can take a look at my extension of the version given by Professor Neil Sandham.
 
@@ -39,12 +40,12 @@ There are 5 files needed for this version of the model to work:
 distance from it. Please see "" for a detailed description of this function.
 
 "three_DoF_aircraft_model.m" is a function that calculates the aircraft's pitching moment, x body force amd z body force at some instant. This is used later
-in a free crude trim calculator.
+in a very crude trim calculator.
 
 "three_DoF_aircraft_simulator.m" achieves the same purpose as three_DoF_aircraft_model.m, though it takes in a control vector, u and state vector x. Using these inputs 
 xdot is calculated. This version is significant in that it considers the effect of pitch rate on the local velocity at each horseshoe vortex.
 
-"simulator.m" is a rather messy script. It contains a very, **very** crude trim calculator, the aerodynamic stability derivative calculations and the time stepping method for the flight simulator.
+"simulator.m" is a rather messy script. It contains a very, **very** crude trim calculator, the aerodynamic stability derivative calculations and the time stepping method for the flight simulator. You can use this script to find a trim point 
 
 ** Again I cannot stress enough that you'd only want to use this model to verify
 
