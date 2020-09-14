@@ -10,7 +10,7 @@ dihedral, sweep and taper to be modelled. The tailplane is assumed to be all mov
 If you want to understand the theory behind this model, it is highly recommended you take a look at "" before diving into the code. Here you'll find a very
 indepth explanation of the vortex lattice method and you can take a look at my extension of the version given by Professor Neil Sandham.
 
-### There are two versions of the flight simulator available:
+## There are two versions of the flight simulator available:
 
 ### The script based simulator
 This version works as a MATLAB script can be used to calculate aerodynamic stability
