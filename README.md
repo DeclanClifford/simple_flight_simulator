@@ -7,11 +7,13 @@ used to model the aircraft's geometry. 4 for the main wing, 1 for the fuselage, 
 these surfaces are modelled as thin flat plate wings (yes, including the fuselage). 4 horseshoe vortices were chosen for the main wings to allow the effects of 
 dihedral, sweep and taper to be modelled. The tailplane is assumed to be all moving.
 
-The model gives generally good agreement (within 15%) with aerodynamic stability derivatives as given by G. L. Teper for a Ryan Navion
+The model gives has demonstrated good agreement with aerodynamic stability derivatives of several aircraft. For example, most longitudinal stability derivatives are within 15% for the Ryan Navion, and Convair 880M. Differences could be attributed to many things, the most significant reason would be of course the simplicity of the model. The wing model is very reasonable, however the tailplane and fuselage are admittedly very basic models. Furthermore, this model is restricted to low speed aerodynamics (does not consider compressibility) and does not model stall. For the best set of results I would recommend you stay within plus/minus 15 degrees **angle of attack** (not pitch angle!).  
+
+In the future I will upload a more comprehensive analysis and provide a comparison between this model and Digital DATCOM. However I can say off of some very prelimnary tests I have done that Digital DATCOM yields very similar results.
 
 # Theory
 If you want to understand the theory behind this model, it is highly recommended you take a look at "" before diving into the code. Here you'll find a very
-indepth explanation of the vortex lattice method and you can take a look at my extension of the version given by Professor Neil Sandham.
+indepth explanation of the vortex lattice method and you can take a look at my extension of the vortex lattice method by Professor Neil Sandham.
 
 # Why did you do this?
 This is a project I took on to keep myself busy before starting my final year of Aeronautics and Astronautics with Air Vehicle Systems and Design at the University of Southampton. The objectives of this project were
@@ -49,16 +51,14 @@ in a very crude trim calculator.
 [three_DoF_aircraft_simulator.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/three_DoF_aircraft_simulator.m) achieves the same purpose as three_DoF_aircraft_model.m, though it takes in a control vector, u and state vector x. Using these inputs 
 xdot is calculated. This version is significant in that it considers the effect of pitch rate on the local velocity at each horseshoe vortex.
 
-
-
-** Again I cannot stress enough that you'd only want to use this model to compare aerodynamic stability derivatives or if you don't have Simulink installed.
-
+**Again I cannot stress enough that you'd only want to use this model to compare aerodynamic stability derivatives or if you don't have Simulink installed.**
 
 ### Simulink based simulator
 This version is the more sophisticated model. The model works in real time and is coupled 
 to FlightGear which provides visualisation of the aircraft (Ryan Navion) in flight . It's important to note
-that FlightGear is only used for visualisation. The aerodynamics are calculated in a separate block. The model
-also contains a simple autopilot system where the aircraft can be set to reach a certain altitude at a specific climb rate.
+that FlightGear is only used for visualisation. The aerodynamics are calculated in a separate block. 
+
+The model also contains a simple autopilot system where the aircraft can be set to reach a certain altitude at a specific climb rate. The autopilot will trim for steady level flight at the target altitude.
 
 ### System
 
