@@ -28,7 +28,7 @@ This is a project I took on to keep myself busy before starting my final year of
 
 There are two versions of the flight simulator available:
 
-### Script based simulator
+## Script based simulator
 This version works as a MATLAB script can be used to calculate aerodynamic stability
 derivatives. It is coupled with a fourth order Runge Kutta time stepping method. **This
 is more of a proof of concept model and you would really only be using this to verify stability
@@ -53,7 +53,7 @@ xdot is calculated. This version is significant in that it considers the effect 
 
 **Again I cannot stress enough that you'd only want to use this model to compare aerodynamic stability derivatives or if you don't have Simulink installed.**
 
-### Simulink based simulator
+## Simulink based simulator
 This version is the more sophisticated model. The model works in real time and is coupled 
 to FlightGear which provides visualisation of the aircraft (Ryan Navion) in flight . It's important to note
 that FlightGear is only used for visualisation. The aerodynamics are calculated in a separate block. 
