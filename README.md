@@ -47,8 +47,24 @@ xdot is calculated. This version is significant in that it considers the effect 
 
 "simulator.m" is a rather messy script. It contains a very, **very** crude trim calculator, the aerodynamic stability derivative calculations and the time stepping method for the flight simulator. You can use this script to find a trim point 
 
-** Again I cannot stress enough that you'd only want to use this model to verify
+** Again I cannot stress enough that you'd only want to use this model to compare aerodynamic stability derivatives or if you don't have Simulink installed.
 
 
 ### Simulink based simulator
-This version is the more sophisticated model. 
+This version is the more sophisticated model. The model works in real time and is coupled 
+to FlightGear which provides visualisation of the aircraft (Ryan Navion) in flight . It's important to note
+that FlightGear is only used for visualisation. The aerodynamics are calculated in a separate block. The model
+also contains a simple autopilot system where the aircraft can be set to reach a certain altitude at a specific climb rate.
+
+### System
+
+
+
+
+
+
+
+
+
+
+
