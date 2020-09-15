@@ -26,7 +26,7 @@ This is a project I took on to keep myself busy before starting my final year of
 
 # The simulators
 
-There are two versions of the flight simulator available:
+There are two versions of the flight simulator available. There is the pure script based simulator and the Simulink based simulator. The aerodynamic model does not differ between these versions.
 
 ## Script based simulator
 This version works as a MATLAB script can be used to calculate aerodynamic stability
