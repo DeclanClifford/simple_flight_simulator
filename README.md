@@ -32,10 +32,14 @@ derivatives. It is coupled with a fourth order Runge Kutta time stepping method.
 is more of a proof of concept model and you would really only be using this to verify stability
 derivatives with data. Pilot inputs can be enterred, however they'll only be modelled as single step inputs.**
 
-There are 5 files needed for this version of the model to work:
+There are 5 files needed for this version of the model to work. They can be split into two groups:
 
+### The scripts you should touch
 [navion_details_six_DoF.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/navion_details_six_DoF.m) contains all of the simulated aircraft's geometry. The details of the Ryan Navion are from a report by G . L. Teper.
 
+[simulator.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/simulator.m) is a rather messy script. It contains a very, **very** crude trim calculator, the aerodynamic stability derivative calculations and the time stepping method for the flight simulator. You can use this script to find a trim point 
+
+### The scripts you should not touch
 [vfil.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/vfil.m) is requirement for "three_DoF_aircraft_model.m" and "three_DoF_aircraft_simulator.m". It calculates the induction of a vortex filament at a point some perpendicular
 distance from it. Please see "" for a detailed description of this function.
 
@@ -45,7 +49,7 @@ in a very crude trim calculator.
 [three_DoF_aircraft_simulator.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/three_DoF_aircraft_simulator.m) achieves the same purpose as three_DoF_aircraft_model.m, though it takes in a control vector, u and state vector x. Using these inputs 
 xdot is calculated. This version is significant in that it considers the effect of pitch rate on the local velocity at each horseshoe vortex.
 
-[simulator.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/simulator.m) is a rather messy script. It contains a very, **very** crude trim calculator, the aerodynamic stability derivative calculations and the time stepping method for the flight simulator. You can use this script to find a trim point 
+
 
 ** Again I cannot stress enough that you'd only want to use this model to compare aerodynamic stability derivatives or if you don't have Simulink installed.
 
