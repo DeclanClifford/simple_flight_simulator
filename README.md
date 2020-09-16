@@ -64,10 +64,9 @@ The model also contains a simple autopilot system where the aircraft can be set 
 **Make sure vfil.m is in the same directory as the SImulink file**
 
 ### System
-The full system block diagram is shown in Figure 1. You'll notice four blocks. `Command`, `Autopilot`, `3DOF Aircraft Plant Model` and `FlightGear Visualisation`.
+The full system block diagram is shown in the image below. You'll notice four blocks. `Command`, `Autopilot`, `3DOF Aircraft Plant Model` and `FlightGear Visualisation`.
 
 ![Figure 1](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/images/system.JPG)
-Figure 1
 
 `Command` simply allows the user to specify a target altitude and maximum climb rate. This block is fairly self explanatory.
 ![Figure 2](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/images/command.JPG)
