@@ -64,14 +64,21 @@ The model also contains a simple autopilot system where the aircraft can be set 
 **Make sure vfil.m is in the same directory as the SImulink file**
 
 ### System
-The full system block diagram is shown in Figure [*]. You'll notice four blocks. `Command`, `Autopilot`, `3DOF Aircraft Plant Model` and `FlightGear Visualisation`.
+The full system block diagram is shown in Figure 1. You'll notice four blocks. `Command`, `Autopilot`, `3DOF Aircraft Plant Model` and `FlightGear Visualisation`.
+
+![Figure 1](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/images/system.JPG)
+Figure 1
 
 `Command` simply allows the user to specify a target altitude and maximum climb rate. This block is fairly self explanatory.
+![Figure 2](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/images/command.JPG)
 
 `Autopilot` has two outputs, the throttle output and the elevator output. Throttle is assumed to be at maximum power. The elevator command is linked to the target altitude specified in `Command` through three controller loops. Each of these controllers has been tuned to give a reasonably, albeit slightly exaggerated response for the Ryan Navion. An actuator is also present to make the elevator response more realistic.
+![Figure 3](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/images/autopilot.JPG)
 
 `3 DOF Aircraft Plant Model` is where the important things happen. The output from `Autopilot`, a control vector, is fed into [three_DoF_aircraft_simulator.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/three_DoF_aircraft_simulator.m). Again, to understand this I highly recommend you see [simple_vortex_lattice_method](https://github.com/DeclanClifford/simple_vortex_lattice_method). The state vector output, x, is then used to calculate airspeed and flight path angle. As importantly it is used to calculated the aircraft's position given as PN - Position North, PE - Position East and h - altitude. These are calculated in a very simple script titled `navigation_equation` which is in effect a matrix rotation from the body frame to the earth frame. Given the model is longitudinal only PE is always zero.
+![Figure 4](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/images/3dofaircraftplantmodel.JPG)
 
 `FlightGear Visualisation` calculates the **geodetic** latitude and longitude using PN, PE, h. This is performed using an aerospace blockset block `Flat Earth to LLA`. All of this is fed into the `FlightGear Preconfigured 6DoF Animation` block. **This block is commented out by default since I assume most people will not have FlightGear integrated with Simulink in the same way I do. If you want to try it there are many excellent videos on YouTube which explain more clearly than I can here about how to connect FlightGear to Simulink. This also means the model will not run in real time if you have the block disabled.**
+![Figure 5](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/images/visualisation.JPG)
 
 
