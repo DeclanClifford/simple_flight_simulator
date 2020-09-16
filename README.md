@@ -60,7 +60,8 @@ that FlightGear is only used for visualisation. The aerodynamics are calculated 
 
 The model also contains a simple autopilot system where the aircraft can be set to reach a certain altitude at a specific climb rate. The autopilot will trim for steady level flight at the target altitude.
 
-**You must run the** [initialise_constants] script before using the Simulink model. 
+**You must run the** [initialise_constants] script before using the Simulink model.
+**Make sure vfil.m is in the same directory as the SImulink file**
 
 ### System
 The full system block diagram is shown in Figure [*]. You'll notice four blocks. `Command`, `Autopilot`, `3DOF Aircraft Plant Model` and `FlightGear Visualisation`.
