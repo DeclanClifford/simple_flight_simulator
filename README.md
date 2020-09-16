@@ -2,7 +2,7 @@
 A 3DOF flight simulator based on a 7 horseshoe vortex aerodynamic model
 
 # What is this?
-This is a MATLAB based longitudinal flight simulator. The aerodynamic model is a custom made vortex lattice method. 7 horseshoe vortices are
+This is a MATLAB based longitudinal flight simulator. The aerodynamic model is a custom-made vortex lattice method. 7 horseshoe vortices are
 used to model the aircraft's geometry. 4 for the main wing, 1 for the fuselage, 1 for the horizontal stabiliser and 1 for the vertical stabiliser. In effect,
 these surfaces are modelled as thin flat plate wings (yes, including the fuselage). 4 horseshoe vortices were chosen for the main wings to allow the effects of 
 dihedral, sweep and taper to be modelled. The tailplane is assumed to be all moving.
@@ -34,7 +34,7 @@ derivatives. It is coupled with a fourth order Runge Kutta time stepping method.
 is more of a proof of concept model and you would really only be using this to verify stability
 derivatives with data. Pilot inputs can be enterred, however they'll only be modelled as single step inputs.**
 
-There are 5 files needed for this version of the model to work. They can be split into two groups:
+There are 5 files needed for this version of the model to work. They can be split into two groups; the scripts you should touch, i.e. the scripts you will most likely want to use and the scripts you should not touch, i.e. the scripts that are required for the scripts you should touch to work.
 
 ### The scripts you should touch
 [navion_details_six_DoF.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/navion_details_six_DoF.m) contains all of the simulated aircraft's geometry. The details of the Ryan Navion are from a report by G . L. Teper.
@@ -60,15 +60,17 @@ that FlightGear is only used for visualisation. The aerodynamics are calculated 
 
 The model also contains a simple autopilot system where the aircraft can be set to reach a certain altitude at a specific climb rate. The autopilot will trim for steady level flight at the target altitude.
 
+**You must run the** [initialise_constants] script before using the Simulink model. 
+
 ### System
+The full system block diagram is shown in Figure [*]. You'll notice four blocks. `Command`, `Autopilot`, `3DOF Aircraft Plant Model` and `FlightGear Visualisation`.
 
+`Command` simply allows the user to specify a target altitude and maximum climb rate. This block is fairly self explanatory.
 
+`Autopilot` has two outputs, the throttle output and the elevator output. Throttle is assumed to be at maximum power. The elevator command is linked to the target altitude specified in `Command` through three controller loops. Each of these controllers has been tuned to give a reasonably, albeit slightly exaggerated response for the Ryan Navion. An actuator is also present to make the elevator response more realistic.
 
+`3 DOF Aircraft Plant Model` is where the important things happen. The output from `Autopilot`, a control vector, is fed into [three_DoF_aircraft_simulator.m](https://github.com/DeclanClifford/simple_flight_simulator/blob/master/script%20version/three_DoF_aircraft_simulator.m). Again, to understand this I highly recommend you see ''. The state vector output, x, is then used to calculate airspeed and flight path angle. As importantly it is used to calculated the aircraft's position given as PN - Position North, PE - Position East and h - altitude. These are calculated in a very simple script titled `navigation_equation` which is in effect a matrix rotation from the body frame to the earth frame. Given the model is longitudinal only PE is always zero.
 
-
-
-
-
-
+`FlightGear Visualisation` calculates the **geodetic** latitude and longitude using PN, PE, h. This is performed using an aerospace blockset block `Flat Earth to LLA`. All of this is fed into the `FlightGear Preconfigured 6DoF Animation` block. **This block is commented out by default since I assume most people will not have FlightGear integrated with Simulink in the same way I do. If you want to try it there are many excellent videos on YouTube which explain more clearly than I can here about how to connect FlightGear to Simulink**
 
 
