@@ -2,6 +2,11 @@ function[M, Fxb, Fzb] = three_DoF_aircraft_model(alpha_t, alpha)
 
 % By D. Clifford 28/08/2020
 
+%% IMPORTANT NOTE
+% 15-10-2020
+% POTENTIAL ERROR FOUND IN SIGN OF NORMAL VECTORS FOR TAIL PLANE AND MAIN
+% WING - ENSURE SIN COMPONENT IS IN THE CORRECT DIRECTION
+%%
 % This is a simple vortex lattice method, using seven horseshoe vortices to
 % model an aircraft, 4 for the aircraft's main wing, 1 for the horizontal
 % stabiliser, 1 for the vertical stabiliser and 1 for the fuselage. The 
@@ -131,7 +136,7 @@ cp = 0.5 * cw / fact_w;
 % wing control point locations and normal vectors
 for i = 1 : 4
     xc(:, i) = 0.5 * (xa(:, i) + xb(:, i)) +...
-               [cos(alpha_ws) * cp(i); 0.0; sin(alpha_ws) * cp(i)];
+               [cos(alpha_ws) * cp(i); 0.0; -sin(alpha_ws) * cp(i)];
 end
 
 % port wing normal vectors
@@ -164,7 +169,7 @@ n(:, 4) = unitnorm2 * -1;
 xa(:, 5) = [l; - 0.5 * bp_tp_h; 0.0];
 xb(:, 5) = [l; + 0.5 * bp_tp_h; 0.0];
 xc(:, 5) = 0.5 * (xa(:, 5) + xb(:, 5)) +...
-                 [cos(alpha_t) * cp_tp_h; 0; sin(alpha_t) * cp_tp_h];
+                 [cos(alpha_t) * cp_tp_h; 0; -sin(alpha_t) * cp_tp_h];
 
 % tail plane normal vector
 n(:, 5) = [sin(alpha_t); 0.0; cos(alpha_t)];
@@ -210,7 +215,7 @@ for i = 1 : 7
 end
 
 % solved circulation
-gamma = A \ rhs';
+gamma = A \ rhs'
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%% calculating forces and local velocity %%%%%%%%%%%%%%%%%
@@ -235,6 +240,7 @@ for i = 1 : 7
     Fz(i) = rho * (u(1, i) * s(2) - u(2, i) * s(1)) * gamma(i);
     
 end
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% zero lift drag coefficient estimate %%%%%%%%%%%%%%%%%%%%%%
